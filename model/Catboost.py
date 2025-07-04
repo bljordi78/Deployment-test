@@ -1,5 +1,5 @@
 # Utils functions
-from model.utils import regResults, plotCatBoostImportance
+from utils import regResults, plotCatBoostImportance
 
 # Data wrangling libraries
 import pandas as pd
