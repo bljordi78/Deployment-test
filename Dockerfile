@@ -7,17 +7,17 @@ RUN mkdir /app
 # Set working directory
 WORKDIR /app
 
-# 3. Copy project files into the container
+# Copy project files into the container
 COPY . /app
 
 # Update pip
 RUN pip install --upgrade pip
 
 # Install dependencies from "requirements.txt"
-RUN pip install -r requirements.txt
+RUN pip install --no-cache-dir -r requirements.txt
 
-# 6. Expose the default FastAPI port
+# Step 5: Expose port (FastAPI runs on 8000)
 EXPOSE 8000
 
-# 7. Run the API with uvicorn
-CMD ["uvicorn", "app:app", "--host", "0.0.0.0", "--port", "8000"]
+# Run the FastAPI app with Uvicorn
+CMD uvicorn app:app --host 0.0.0.0 --port $PORT --workers 1
